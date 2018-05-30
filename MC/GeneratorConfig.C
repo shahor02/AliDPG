@@ -396,7 +396,7 @@ void GeneratorConfig(Int_t tag)
   printf(">>>>> Diamond sigma-xy: %f \n", sigmaxy);
 
   gen->SetOrigin(0., 0., 0.);
-  gen->SetSigma(sigmaxy, sigmaxy, 5.);
+  gen->SetSigma(sigmaxy, sigmaxy, 0.1);
   
   gen->SetVertexSmear(kPerEvent);
   gen->Init();
@@ -982,6 +982,8 @@ GeneratorHijing()
   // kinematic selection
   gener->SetSelectAll(0);
   gener->SetPtHardMin (2.3);
+
+  gener->SetYRange(-3,3);
   return gener;
 }
 
@@ -1688,7 +1690,7 @@ GeneratorQED()
   genBg->SetTarget    (targN, targA, targZ);
   genBg->SetYRange(-6.,3);
   genBg->SetPtRange(1.e-3,1.0);       // Set pt limits (GeV) for e+-: 1MeV corresponds to max R=13.3mm at 5kGaus
-  genBg->SetLumiIntTime(6.e27,3e-6);  // luminosity and integration time
+  genBg->SetLumiIntTime(6.e27,0.0001*10e-6);  // luminosity and integration time
   genBg->SetVertexSource(kInternal);
   
   return genBg;

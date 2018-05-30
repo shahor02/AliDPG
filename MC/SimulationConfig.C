@@ -247,7 +247,7 @@ void SimulationDefault(AliSimulation &sim)
 
   //
   //
-  sim.UseVertexFromCDB();
+  //  sim.UseVertexFromCDB();
   sim.UseMagFieldFromGRP();
 
   //
@@ -297,8 +297,13 @@ void SimulationRun3(AliSimulation &sim)
   //
   SimulationConfigPHOS(sim);
   //
-  sim.UseVertexFromCDB();
-  sim.UseMagFieldFromGRP();
+  //  sim.UseVertexFromCDB();
+  //sim.UseMagFieldFromGRP();
+  AliMagF* fld =  new AliMagF("bmap","customAliMagF",-1,-1,AliMagF::k2kG);
+  fld->SetBit(AliMagF::kOverrideGRP);
+  TGeoGlobalMagField::Instance()->SetField( fld );
+  TGeoGlobalMagField::Instance()->Lock();
+  
   sim.SetUseDetectorsFromGRP(kTRUE);
   //
   sim.SetRunQA(":");

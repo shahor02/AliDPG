@@ -223,27 +223,27 @@ void DetectorRun3()
   iABSO   = 1;
   iACORDE = 0;
   iAD     = 0;
-  iDIPO   = 1;
-  iEMCAL  = 1;
+  iDIPO   = 0;
+  iEMCAL  = 0;
   iFMD    = 0;
   iFRAME  = 1;
   iHALL   = 1;
   iITS    = 1;
-  iMAG    = 1;
-  iMUON   = 1;
-  iPHOS   = 1;
+  iMAG    = 0;
+  iMUON   = 0;
+  iPHOS   = 0;
   iPIPE   = 1;
   iPMD    = 0;
-  iHMPID  = 1;
-  iSHIL   = 1;
+  iHMPID  = 0;
+  iSHIL   = 0;
   iT0     = 0;
-  iTOF    = 1;
-  iTPC    = 1;
-  iTRD    = 1;
+  iTOF    = 0;
+  iTPC    = 0;
+  iTRD    = 0;
   iVZERO  = 0;
-  iZDC    = 1;
+  iZDC    = 0;
   iMFT    = 0; // removed MFT for the time being
-  iFIT    = 1;
+  iFIT    = 0;
 
 }
 
@@ -624,7 +624,8 @@ void DetectorInitRun3(Int_t tag)
     {
       //=================== PIPE parameters ============================
 
-      // AliPIPE *PIPE = new AliPIPEv3("PIPE", "Beam Pipe");
+      //AliPIPE *PIPE = new AliPIPEv3("PIPE", "Beam Pipe");
+      //AliPIPE *PIPE = new AliPIPEupgrade("PIPE", "Beam Pipe",1.6,0.06); // for Cyl setup
       AliPIPE *PIPE = new AliPIPEupgrade("PIPE", "Beam Pipe");
     }
  
@@ -633,6 +634,7 @@ void DetectorInitRun3(Int_t tag)
       //=================== ITS parameters ============================
       //      CreateITSUv2ALP3();
       gROOT->ProcessLine(".x $ALICE_ROOT/ITSMFT/ITS/itsuTestBench/CreateITSUv2ALP3.C");
+      //gROOT->ProcessLine(".x /home/shahoian/alice/AliRoot/ITSMFT/ITS/itsuTestBench/CreateITSUv2CylIB.C");
     }
 
   if (iTPC)
